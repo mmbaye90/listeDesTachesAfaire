@@ -23,7 +23,8 @@
         </form>
         <ul id="showToDoList">
             <!-- <li>Valeur</li>
-            <i class="fa-solid fa-check check"></i>
+
+            
             <i class="fa-regular fa-trash trash"></i> -->
         </ul>
     </div>
@@ -35,7 +36,32 @@
     let selectFilter = document.querySelector('#select');
     let showToDoList = document.querySelector('ul');
 
-    //
+    //EVENTS
+    btnAdd.addEventListener('click',addToDo);
+
+    //FUNTIONS
+    function addToDo(){
+        //Création des elements
+        let divParentLiIcone = document.createElement('div');
+            divParentLiIcone.setAttribute('id',"divParentLiIcone")
+        let li = document.createElement('li');
+
+        //Remplissage des elementsHTML créés
+        li.innerText = inputText.value;
+        if (inputText.value === "") {
+            alert("Tache vide")
+        } else {
+            divParentLiIcone.append(li)
+            divParentLiIcone.innerHTML +=`<i class="fa-solid fa-check check"></i>`+
+            `<i class="fa-regular fa-trash trash"></i>`
+            //Injonction des elements dans le DOM
+            showToDoList.append(divParentLiIcone)
+            
+            //Reset inputText
+            inputText.value = "";
+        }
+
+    }
 </script>
 
 </html>
