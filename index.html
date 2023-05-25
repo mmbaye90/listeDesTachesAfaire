@@ -12,9 +12,30 @@
 <body>
     <div id="center">
         <h1>Liste des taches à faire</h1>
+        <form action="">
+            <input type="text" name="inputText" id="inputText">
+            <i class="fa-solid fa-plus plus"></i>
+            <select name="select" id="select">
+                <option value="all">Toutes</option>
+                <option value="completed">Faîtes</option>
+                <option value="uncompleted">A faire</option>
+            </select>
+        </form>
+        <ul id="showToDoList">
+            <!-- <li>Valeur</li>
+            <i class="fa-solid fa-check check"></i>
+            <i class="fa-regular fa-trash trash"></i> -->
+        </ul>
     </div>
 </body>
 <script>
+    //SELECTEURS
+    let inputText = document.querySelector('input');
+    let btnAdd = document.querySelector('.plus');
+    let selectFilter = document.querySelector('#select');
+    let showToDoList = document.querySelector('ul');
+
+    //
 </script>
 
 </html>

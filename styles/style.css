@@ -9,4 +9,40 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+ul{
+    display: flex;
+}
+.plus{
+    margin-left: -1.2rem;
+    cursor: pointer;
+    background-color: rgb(24, 23, 23);
+    color: white;
+}
+.plus:hover{
+    opacity: 0.5;
+}
+select{
+    margin-left: 0.5rem;
+}
+ul{
+    display: flex;
+    padding: 0.2rem;
+    /* background-color: whitesmoke; */
+    width: 19%;
+    align-items: center;
+    border-radius: 0.3rem;
+    margin-top: 0.7rem;
+}
+li{
+    flex: 1;
+    list-style-type: none;
+}
+.trash{
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+.check{
+    cursor: pointer;
 }
