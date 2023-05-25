@@ -22,10 +22,6 @@
             </select>
         </form>
         <ul id="showToDoList">
-            <!-- <li>Valeur</li>
-
-            
-            <i class="fa-regular fa-trash trash"></i> -->
         </ul>
     </div>
 </body>
@@ -38,6 +34,7 @@
 
     //EVENTS
     btnAdd.addEventListener('click',addToDo);
+    showToDoList.addEventListener('click',checkAndRemove);
 
     //FUNTIONS
     function addToDo(){
@@ -61,6 +58,20 @@
             inputText.value = "";
         }
 
+    }
+    function checkAndRemove(e){
+        // console.log(e.target.classList[2]);
+        if (e.target.classList[2] === "check") {
+            e.target.parentNode.classList.toggle("completed");
+        }
+        else if (e.target.classList[2] === "trash") {
+            e.target.parentNode.classList.add("sup");
+            let div = e.target.parentNode
+            div.addEventListener('transitionend',()=>{
+                div.remove()
+            })
+        }
+        // console.log("div parent"+e.target.parentNode);
     }
 </script>
 
