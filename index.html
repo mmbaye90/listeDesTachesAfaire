@@ -34,7 +34,7 @@
     /********************* EVENTS ************************************/
     btnAdd.addEventListener('click',addToDo);
     showToDoList.addEventListener('click',checkAndRemove);
-    selectFilter.addEventListener('input',filterToDo)
+    selectFilter.addEventListener('input',filterToDo);
 
     /******************** FUNTIONS ***********************************/
     function addToDo(){
@@ -54,10 +54,10 @@
             //Injonction des elements dans le DOM
             showToDoList.append(divParentLiIcone)
             
-            //Reset inputText
-            inputText.value = "";
         }
-
+        saveToLocalStorage(inputText.value);
+           //Reset inputText
+           inputText.value = "";
     }
 
 
@@ -103,11 +103,17 @@
                 default:
                     break;
             }
-            // console.log(e.target.value);
-            // console.log(tache.classList);
-            // console.log(tache);
         })
     }
+    let donnees = [];
+    function saveToLocalStorage(todos){
+        if (JSON.parse(localStorage.getItem("tache") === null)) {
+            donnees
+        }
+        donnees.push(todos)
+        localStorage.setItem("tache",JSON.stringify(donnees))
+    }
+
 </script>
 
 </html>
