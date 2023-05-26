@@ -35,6 +35,7 @@
     btnAdd.addEventListener('click',addToDo);
     showToDoList.addEventListener('click',checkAndRemove);
     selectFilter.addEventListener('input',filterToDo);
+    document.addEventListener("DOMContentLoaded",getItemLs)
 
     /******************** FUNTIONS ***********************************/
     function addToDo(){
@@ -105,13 +106,41 @@
             }
         })
     }
+
+
     let donnees = [];
     function saveToLocalStorage(todos){
         if (JSON.parse(localStorage.getItem("tache") === null)) {
             donnees
         }
-        donnees.push(todos)
-        localStorage.setItem("tache",JSON.stringify(donnees))
+        else{
+            donnees.push(todos);
+            localStorage.setItem("tache",JSON.stringify(donnees));
+        }
+
+    }
+
+    function getItemLs(){
+        
+        if (JSON.parse(localStorage.getItem("tache") === null)) {
+            donnees
+        }
+        else{
+            let itemsLs = JSON.parse(localStorage.getItem("tache"));
+            itemsLs.forEach((elLs)=>{
+                let divParentLiIcone = document.createElement('div');
+            divParentLiIcone.setAttribute('id',"divParentLiIcone")
+            let li = document.createElement('li');
+
+        //Remplissage des elementsHTML créés
+            li.innerText = elLs;
+            divParentLiIcone.append(li)
+            divParentLiIcone.innerHTML +=`<i class="fa-solid fa-check check"></i>`+
+            `<i class="fa-regular fa-trash trash"></i>`
+            //Injonction des elements dans le DOM
+            showToDoList.append(divParentLiIcone)
+            })
+        }  
     }
 
 </script>
