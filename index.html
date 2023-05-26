@@ -21,22 +21,22 @@
                 <option value="uncompleted">A faire</option>
             </select>
         </form>
-        <ul id="showToDoList">
-        </ul>
+        <ul id="showToDoList"></ul>
     </div>
 </body>
 <script>
-    //SELECTEURS
+    /********************** SELECTEURS *********************************/
     let inputText = document.querySelector('input');
     let btnAdd = document.querySelector('.plus');
     let selectFilter = document.querySelector('#select');
     let showToDoList = document.querySelector('ul');
 
-    //EVENTS
+    /********************* EVENTS ************************************/
     btnAdd.addEventListener('click',addToDo);
     showToDoList.addEventListener('click',checkAndRemove);
+    selectFilter.addEventListener('input',filterToDo)
 
-    //FUNTIONS
+    /******************** FUNTIONS ***********************************/
     function addToDo(){
         //Création des elements
         let divParentLiIcone = document.createElement('div');
@@ -59,6 +59,8 @@
         }
 
     }
+
+
     function checkAndRemove(e){
         // console.log(e.target.classList[2]);
         if (e.target.classList[2] === "check") {
@@ -72,6 +74,39 @@
             })
         }
         // console.log("div parent"+e.target.parentNode);
+    }
+
+    function filterToDo(e){
+        let taches = showToDoList.childNodes;
+        taches.forEach((tache)=>{
+            switch (e.target.value) {
+                case "all":
+                    tache.style.display = 'flex'
+                    break;
+                case "completed":
+                    if (tache.classList.contains("completed")) {
+                        tache.style.display ="flex";
+                    }
+                    else{
+                        tache.style.display ="none"
+                    }
+                    break;
+                case "uncompleted":
+                    if (!tache.classList.contains("completed")) {
+                        tache.style.display ="flex";
+                    }
+                    else{
+                        tache.style.display ="none"
+                    }
+                    break;
+            
+                default:
+                    break;
+            }
+            // console.log(e.target.value);
+            // console.log(tache.classList);
+            // console.log(tache);
+        })
     }
 </script>
 
