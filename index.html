@@ -69,9 +69,10 @@
         }
         else if (e.target.classList[2] === "trash") {
             e.target.parentNode.classList.add("sup");
-            let div = e.target.parentNode
+            let div = e.target.parentNode;
+            removeItemLs(div)
             div.addEventListener('transitionend',()=>{
-                div.remove()
+                div.remove();
             })
         }
         // console.log("div parent"+e.target.parentNode);
@@ -141,6 +142,19 @@
             showToDoList.append(divParentLiIcone)
             })
         }  
+    }
+
+    function removeItemLs(divParent){
+        if (JSON.parse(localStorage.getItem("tache") === null)) {
+            donnees
+        }
+        else{
+            let itemsLs = JSON.parse(localStorage.getItem("tache"));
+            const indexInput = itemsLs.indexOf(divParent.firstChild.innerText)
+            itemsLs.splice(indexInput,1);
+            localStorage.setItem('tache',JSON.stringify(itemsLs))
+        }
+
     }
 
 </script>
