@@ -48,15 +48,15 @@
         li.innerText = inputText.value;
         if (inputText.value === "") {
             alert("Tache vide")
-        } else {
+        } 
+        else {
             divParentLiIcone.append(li)
             divParentLiIcone.innerHTML +=`<i class="fa-solid fa-check check"></i>`+
             `<i class="fa-regular fa-trash trash"></i>`
             //Injonction des elements dans le DOM
             showToDoList.append(divParentLiIcone)
-            
         }
-        saveToLocalStorage(inputText.value);
+        saveToLocalStorage(inputText.value);       
            //Reset inputText
            inputText.value = "";
     }
@@ -109,16 +109,13 @@
     }
 
 
-    let donnees = [];
+    let donnees =[]
     function saveToLocalStorage(todos){
-        if (JSON.parse(localStorage.getItem("tache") === null)) {
+        if (localStorage.getItem("tache")===null) {
             donnees
-        }
-        else{
-            donnees.push(todos);
-            localStorage.setItem("tache",JSON.stringify(donnees));
-        }
-
+        } 
+           donnees.push(todos);
+           localStorage.setItem('tache',JSON.stringify(donnees))
     }
 
     function getItemLs(){
